@@ -1,4 +1,4 @@
-Demo for Devoxx "Testing Microservices with a Citrus twist" ![Logo][1]
+Demo for "Testing Microservices with a Citrus twist" ![Logo][1]
 ==============
 
 Citrus Devoxx Demo
