@@ -49,30 +49,39 @@ public class ReportService implements InitializingBean {
     /**
      * Adds new produced item.
      * @param id
-     * @param name
+     * @param type
      * @param amount
      */
-    public void add(String id, String name, Integer amount) throws Exception {
+    public void add(String id, String type, Integer amount) throws Exception {
         produced.add(id);
 
-        if (report.containsKey(name)) {
-            report.get(name).addAndGet(amount);
+        if (report.containsKey(type)) {
+            report.get(type).addAndGet(amount);
         } else {
-            report.put(name, new AtomicInteger(amount));
+            report.put(type, new AtomicInteger(amount));
         }
 
-        if (report.get(name).get() >= 1000) {
-            informStakeholders(name);
+        if (getCookiesCount(type) >= 1000) {
+            informStakeholders(type);
         }
     }
 
     /**
      * Inform stakeholders that we have produced a large amount of cookies.
-     * @param name
+     * @param type
      */
-    private void informStakeholders(String name) {
+    private void informStakeholders(String type) {
         mailService.sendMail("stakeholders@example.com", "Congratulations!",
-                String.format("Produced 1000+ cookies of type '%s', we are rich now!", name));
+                String.format("Produced 1000+ cookies of type '%s', we are rich now!", type));
+    }
+
+    /**
+     * Gets the current cookie order count of type.
+     * @param type
+     * @return
+     */
+    private int getCookiesCount(String type) {
+        return report.get(type).get();
     }
 
     /**
