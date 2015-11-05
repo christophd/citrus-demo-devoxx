@@ -46,13 +46,14 @@ public class PlaceOrdersJmsIT extends TestNGCitrusTestDesigner {
 
     @CitrusTest
     public void placeChocolateCookieOrder() {
+        variable("amount", Functions.randomNumber(2L));
         variable("orderId", Functions.randomNumber(10L));
 
         send(bakeryOrderEndpoint)
             .payload("<order>" +
                         "<type>chocolate</type>" +
                         "<id>${orderId}</id>" +
-                        "<amount>1</amount>" +
+                        "<amount>${amount}</amount>" +
                     "</order>");
 
         repeatOnError(
@@ -73,13 +74,14 @@ public class PlaceOrdersJmsIT extends TestNGCitrusTestDesigner {
 
     @CitrusTest
     public void placeCaramelCookieOrder() {
+        variable("amount", Functions.randomNumber(2L));
         variable("orderId", Functions.randomNumber(10L));
 
         send(bakeryOrderEndpoint)
                 .payload("<order>" +
                             "<type>caramel</type>" +
                             "<id>${orderId}</id>" +
-                            "<amount>1</amount>" +
+                            "<amount>${amount}</amount>" +
                         "</order>");
 
         repeatOnError(
@@ -100,13 +102,14 @@ public class PlaceOrdersJmsIT extends TestNGCitrusTestDesigner {
 
     @CitrusTest
     public void placeBlueberryCookieOrder() {
+        variable("amount", Functions.randomNumber(2L));
         variable("orderId", Functions.randomNumber(10L));
 
         send(bakeryOrderEndpoint)
                 .payload("<order>" +
                             "<type>blueberry</type>" +
                             "<id>${orderId}</id>" +
-                            "<amount>1</amount>" +
+                            "<amount>${amount}</amount>" +
                         "</order>");
 
         repeatOnError(

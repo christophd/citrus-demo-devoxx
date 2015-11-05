@@ -45,12 +45,13 @@ public class PlaceOrdersHttpIT extends TestNGCitrusTestDesigner {
 
     @CitrusTest
     public void placeChocolateCookieOrder() {
+        variable("amount", Functions.randomNumber(2L));
         variable("orderId", Functions.randomNumber(10L));
 
         http().client(bakeryClient)
                 .post("/order")
                 .contentType("application/json")
-                .payload("{ \"order\": { \"type\": \"chocolate\", \"id\": ${orderId}, \"amount\": 1}}");
+                .payload("{ \"order\": { \"type\": \"chocolate\", \"id\": ${orderId}, \"amount\": ${amount}}}");
 
         repeatOnError(
             http().client(reportingClient)
@@ -74,12 +75,13 @@ public class PlaceOrdersHttpIT extends TestNGCitrusTestDesigner {
 
     @CitrusTest
     public void placeCaramelCookieOrder() {
+        variable("amount", Functions.randomNumber(2L));
         variable("orderId", Functions.randomNumber(10L));
 
         http().client(bakeryClient)
                 .post("/order")
                 .contentType("application/json")
-                .payload("{ \"order\": { \"type\": \"caramel\", \"id\": ${orderId}, \"amount\": 1}}");
+                .payload("{ \"order\": { \"type\": \"caramel\", \"id\": ${orderId}, \"amount\": ${amount}}}");
 
         repeatOnError(
             http().client(reportingClient)
@@ -103,12 +105,13 @@ public class PlaceOrdersHttpIT extends TestNGCitrusTestDesigner {
 
     @CitrusTest
     public void placeBlueberryCookieOrder() {
+        variable("amount", Functions.randomNumber(2L));
         variable("orderId", Functions.randomNumber(10L));
 
         http().client(bakeryClient)
                 .post("/order")
                 .contentType("application/json")
-                .payload("{ \"order\": { \"type\": \"blueberry\", \"id\": ${orderId}, \"amount\": 1}}");
+                .payload("{ \"order\": { \"type\": \"blueberry\", \"id\": ${orderId}, \"amount\": ${amount}}}");
 
         repeatOnError(
             http().client(reportingClient)
