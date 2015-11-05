@@ -51,16 +51,17 @@ public class PlaceBulkOrderIT extends TestNGCitrusTestDesigner {
 
     @CitrusTest
     public void placeBulkCookieOrder() {
-        echo("Add 1000+ order and receive mail");
-
         variable("orderType", "chocolate");
         variable("orderId", Functions.randomNumber(10L));
+        variable("amount", 1001L);
+
+        echo("Add 1000+ order and receive mail");
 
         send(bakeryOrderEndpoint)
                 .payload("<order>" +
                             "<type>${orderType}</type>" +
                             "<id>${orderId}</id>" +
-                            "<amount>1001</amount>" +
+                            "<amount>${amount}</amount>" +
                         "</order>");
 
         echo("Receive report mail for 1000+ order");
