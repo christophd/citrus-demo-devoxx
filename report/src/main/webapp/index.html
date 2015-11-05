@@ -44,7 +44,13 @@
 
                         var items = JSON.parse(response.responseText);
                         for (var item in items) {
-                          $( "#overview" ).append('<span class="lead">' + item + '</span><div class="progress" style="width:' + (items[item] + 10) + 'px;"><div class="progress-bar" style="width:100%;"><span>' + items[item] + '</span></div></div>');
+                          var barWidth = items[item] + 10;
+
+                          if (barWidth > 800) {
+                            barWidth = 800;
+                          }
+
+                          $( "#overview" ).append('<span class="lead">' + item + '</span><div class="progress" style="width:' + barWidth + 'px;"><div class="progress-bar" style="width:100%;"><span>' + items[item] + '</span></div></div>');
                         }
                     }
                 });
