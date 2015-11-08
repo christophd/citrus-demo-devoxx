@@ -27,7 +27,7 @@
 
     <application.server>tomcat-7.0</application.server>
     <message.broker>activemq-5.12</message.broker>
-    <docker.host.name>dockerhost</docker.host.name>
+    <docker.deamon.host>dockerhost</docker.deamon.host>
   </properties>
 
   <dependencyManagement>

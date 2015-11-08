@@ -73,9 +73,9 @@
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
           <systemPropertyVariables>
-            <activemq.server.host>${docker.host.name}</activemq.server.host>
+            <activemq.server.host>${docker.deamon.host}</activemq.server.host>
             <activemq.server.port>${activemq.server.port}</activemq.server.port>
-            <bakery.server.host>${docker.host.name}</bakery.server.host>
+            <bakery.server.host>${docker.deamon.host}</bakery.server.host>
             <bakery.server.port>${bakery.server.port}</bakery.server.port>
           </systemPropertyVariables>
         </configuration>
@@ -101,7 +101,7 @@
                 <wait>
                   <log>Broker startup</log>
                   <http>
-                    <url>http://${docker.host.name}:${activemq.admin.port}</url>
+                    <url>http://${docker.deamon.host}:${activemq.admin.port}</url>
                     <method>GET</method>
                     <status>200</status>
                   </http>
@@ -136,7 +136,7 @@
                 <wait>
                   <log>Server startup</log>
                   <http>
-                    <url>http://${docker.host.name}:${bakery.server.port}/bakery/jolokia</url>
+                    <url>http://${docker.deamon.host}:${bakery.server.port}/bakery/jolokia</url>
                     <method>GET</method>
                     <status>200</status>
                   </http>
