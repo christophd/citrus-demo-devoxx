@@ -72,6 +72,9 @@ public class PlaceBulkOrderIT extends TestNGCitrusTestDesigner {
                 .header(CitrusMailMessageHeaders.MAIL_FROM, "cookie-report@example.com")
                 .header(CitrusMailMessageHeaders.MAIL_TO, "stakeholders@example.com");
 
+        send(mailServer)
+                .payload(new ClassPathResource("templates/mail_response.xml"));
+
         echo("Receive report with 1000+ order");
 
         http().client(reportingClient)
