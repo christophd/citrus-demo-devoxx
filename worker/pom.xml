@@ -134,9 +134,9 @@
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
           <systemPropertyVariables>
-            <activemq.server.host>${docker.deamon.host}</activemq.server.host>
+            <activemq.server.host>${docker.host.name}</activemq.server.host>
             <activemq.server.port>${activemq.server.port}</activemq.server.port>
-            <report.server.host>${docker.deamon.host}</report.server.host>
+            <report.server.host>${docker.host.name}</report.server.host>
             <report.server.port>${report.server.port}</report.server.port>
           </systemPropertyVariables>
         </configuration>
@@ -162,7 +162,7 @@
                 <wait>
                   <log>Broker startup</log>
                   <http>
-                    <url>http://${docker.deamon.host}:${activemq.admin.port}</url>
+                    <url>http://${docker.host.name}:${activemq.admin.port}</url>
                     <method>GET</method>
                     <status>200</status>
                   </http>
@@ -191,7 +191,7 @@
                 <env>
                   <FACTORY_TYPE>${factory.type}</FACTORY_TYPE>
                   <FACTORY_COSTS>${factory.costs}</FACTORY_COSTS>
-                  <REPORT_PORT_8080_TCP_ADDR>${env.HOST_IP}</REPORT_PORT_8080_TCP_ADDR>
+                  <REPORT_PORT_8080_TCP_ADDR>${citrus.host.name}</REPORT_PORT_8080_TCP_ADDR>
                   <REPORT_PORT_8080_TCP_PORT>${report.server.port}</REPORT_PORT_8080_TCP_PORT>
                 </env>
                 <cmd>java -jar maven/worker.jar</cmd>

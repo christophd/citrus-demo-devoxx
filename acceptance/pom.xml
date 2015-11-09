@@ -27,11 +27,11 @@
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
           <systemPropertyVariables>
-            <activemq.server.host>${docker.deamon.host}</activemq.server.host>
+            <activemq.server.host>${docker.host.name}</activemq.server.host>
             <activemq.server.port>${activemq.server.port}</activemq.server.port>
-            <bakery.server.host>${docker.deamon.host}</bakery.server.host>
+            <bakery.server.host>${docker.host.name}</bakery.server.host>
             <bakery.server.port>${bakery.server.port}</bakery.server.port>
-            <report.server.host>${docker.deamon.host}</report.server.host>
+            <report.server.host>${docker.host.name}</report.server.host>
             <report.server.port>${report.server.port}</report.server.port>
             <mail.server.port>${mail.server.port}</mail.server.port>
           </systemPropertyVariables>
@@ -57,7 +57,7 @@
                 <wait>
                   <log>Broker startup</log>
                   <http>
-                    <url>http://${docker.deamon.host}:${activemq.admin.port}</url>
+                    <url>http://${docker.host.name}:${activemq.admin.port}</url>
                     <method>GET</method>
                     <status>200</status>
                   </http>
@@ -82,7 +82,7 @@
                 </volumes>
                 <env>
                   <CATALINA_OPTS>-Xmx64m</CATALINA_OPTS>
-                  <MAIL_PORT_2222_TCP_ADDR>${env.HOST_IP}</MAIL_PORT_2222_TCP_ADDR>
+                  <MAIL_PORT_2222_TCP_ADDR>${citrus.host.name}</MAIL_PORT_2222_TCP_ADDR>
                   <MAIL_PORT_2222_TCP_PORT>${mail.server.port}</MAIL_PORT_2222_TCP_PORT>
                 </env>
                 <ports>
@@ -91,7 +91,7 @@
                 <wait>
                   <log>Server startup</log>
                   <http>
-                    <url>http://${docker.deamon.host}:${report.server.port}/report/jolokia</url>
+                    <url>http://${docker.host.name}:${report.server.port}/report/jolokia</url>
                     <method>GET</method>
                     <status>200</status>
                   </http>
@@ -126,7 +126,7 @@
                 <wait>
                   <log>Server startup</log>
                   <http>
-                    <url>http://${docker.deamon.host}:${bakery.server.port}/bakery/jolokia</url>
+                    <url>http://${docker.host.name}:${bakery.server.port}/bakery/jolokia</url>
                     <method>GET</method>
                     <status>200</status>
                   </http>
