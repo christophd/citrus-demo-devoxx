@@ -17,7 +17,7 @@ Using this example with Docker
 ---------
 
 This sample is using Docker as infrastructure for starting up the services in separate containers. The sample application
-makes use of Docker environment variables and hsit name settings that need to be set befoer using the application. Non-Linux 
+makes use of Docker environment variables and hsit name settings that need to be set before using the application. Non-Linux 
 users might want to add dockerhost to your /etc/hosts configuration in order to simply access the
 services running in Docker containers without any port forwarding:
 
